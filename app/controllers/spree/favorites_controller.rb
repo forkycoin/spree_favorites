@@ -1,7 +1,7 @@
 module Spree
   class FavoritesController < Spree::StoreController
 
-    before_filter :find_favorite, only: [:destroy]
+    before_action :find_favorite, only: [:destroy]
 
     def index
       if try_spree_current_user
