@@ -5,9 +5,9 @@ module Spree
 
     def index
       if try_spree_current_user
-        @favorites = spree_current_user.favorites.page(params[:page]).per(Spree::Config.favorites_per_page)
+        @favorites = spree_current_user.favorites
       elsif cookies.signed[:guest_token].present?
-        @favorites = Favorite.by_guest_token(cookies.signed[:guest_token]).page(params[:page]).per(Spree::Config.favorites_per_page)
+        @favorites = Favorite.by_guest_token(cookies.signed[:guest_token])
       else
         @favorites = []
       end

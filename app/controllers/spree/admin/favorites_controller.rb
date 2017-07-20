@@ -3,12 +3,12 @@ module Spree
     class FavoritesController < Spree::Admin::BaseController
 
       def index
-        @favorites = Spree::Product.favorite.page(params[:page])
+        @favorites = Spree::Product.favorite
       end
 
       def users
         @product = Spree::Product.where(:id => params[:id]).first
-        @users = @product.favorite_users.page(params[:page])
+        @users = @product.favorite_users
       end
     end
   end
